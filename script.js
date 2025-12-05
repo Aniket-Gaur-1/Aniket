@@ -66,8 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- LLM API Constants ---
-    const API_KEY = ""; // Using canvas provided key
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${API_KEY}`;
+    // Add your actual Google AI Studio API key here for the drafting feature to work
+    const API_KEY = ""; 
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
 
     // --- Elements ---
     const briefInput = document.getElementById('brief');
@@ -77,16 +78,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const llmMessage = document.getElementById('llm-message');
     const contactForm = document.getElementById('contact-form');
     const formSuccessMessage = document.getElementById('form-success');
+    const formErrorMessage = document.getElementById('form-error');
     
     // --- Gemini LLM Function: Draft Message ---
     async function draftMessageWithGemini(brief) {
         if (!brief.trim()) {
             llmMessage.textContent = "Please enter a brief project idea first.";
-            llmStatus.classList.remove('hidden');
-            llmStatus.classList.remove('bg-blue-100', 'text-blue-800');
+            llmStatus.classList.remove('hidden', 'bg-blue-100', 'text-blue-800');
             llmStatus.classList.add('bg-yellow-100', 'text-yellow-800');
             draftButton.disabled = false;
             setTimeout(() => llmStatus.classList.add('hidden'), 3000);
+            return;
+        }
+
+        if (!API_KEY) {
+            llmMessage.textContent = "AI drafting requires an API key. Please add it in script.js.";
+            llmStatus.classList.remove('hidden');
+            llmStatus.classList.add('bg-red-100', 'text-red-800');
+            draftButton.disabled = false;
+            setTimeout(() => llmStatus.classList.add('hidden'), 5000);
             return;
         }
 
@@ -132,9 +142,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     draftButton.disabled = false;
                     setTimeout(() => llmStatus.classList.add('hidden'), 5000);
                     return; // Success
+                } else {
+                    throw new Error('No content generated');
                 }
             } catch (error) {
-                console.error(`Attempt ${i + 1} failed:`, error);
+                console.error(`AI Draft Attempt ${i + 1} failed:`, error);
                 if (i < maxRetries - 1) {
                     await new Promise(resolve => setTimeout(resolve, delay));
                     delay *= 2; // Exponential backoff
@@ -155,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         draftMessageWithGemini(briefInput.value);
     });
 
-    // Contact Form Submission (Placeholder)
+    // Contact Form Submission (Placeholder - Integrate EmailJS or similar for real submission)
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         const formData = new FormData(this);
@@ -163,12 +175,21 @@ document.addEventListener('DOMContentLoaded', () => {
         
         console.log('Form submitted:', data);
         
-        formSuccessMessage.classList.remove('hidden');
-        this.reset();
-        
+        // Simulate submission delay
         setTimeout(() => {
-            formSuccessMessage.classList.add('hidden');
-        }, 5000);
+            formSuccessMessage.classList.remove('hidden');
+            formErrorMessage.classList.add('hidden'); // Hide any previous errors
+            this.reset();
+            briefInput.value = ''; // Clear brief too
+            messageTextarea.value = '';
+            setTimeout(() => {
+                formSuccessMessage.classList.add('hidden');
+            }, 5000);
+        }, 1000);
+        
+        // TODO: Replace with real submission, e.g., EmailJS
+        // emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', data, 'YOUR_PUBLIC_KEY')
+        //     .then(() => { /* success */ }, () => { /* error */ });
     });
     
     // Testimonials Carousel
@@ -176,22 +197,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.testimonial-slide');
     const totalSlides = slides.length;
 
-    document.getElementById('next-testimonial').addEventListener('click', () => {
+    function nextSlide() {
         slides[currentSlide].classList.remove('active');
         currentSlide = (currentSlide + 1) % totalSlides;
         slides[currentSlide].classList.add('active');
-    });
+    }
 
-    document.getElementById('prev-testimonial').addEventListener('click', () => {
+    function prevSlide() {
         slides[currentSlide].classList.remove('active');
         currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
         slides[currentSlide].classList.add('active');
-    });
+    }
+
+    document.getElementById('next-testimonial').addEventListener('click', nextSlide);
+    document.getElementById('prev-testimonial').addEventListener('click', prevSlide);
 
     // Auto-advance carousel every 5 seconds
-    setInterval(() => {
-        document.getElementById('next-testimonial').click();
-    }, 5000);
+    setInterval(nextSlide, 5000);
     
     // Gallery Modal & Lightbox Logic (from previous request)
     const galleryStack = document.getElementById('gallery-stack');

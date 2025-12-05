@@ -469,77 +469,67 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-16 sm:py-24 md:py-32 bg-neutral-900 text-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12 sm:mb-16 max-w-2xl mx-auto scroll-animate fade-in">
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">Get In Touch</h2>
-                    <p class="mt-3 sm:mt-4 text-base sm:text-lg text-neutral-300 font-light">Have a project in mind or just want to say hi? Let's talk.</p>
-                </div>
-                
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 scroll-animate fade-in">
-                    <!-- Contact Form -->
-                    <div class="bg-white p-6 sm:p-8 md:p-10 rounded-3xl shadow-2xl scroll-animate fade-in">
-                        <!-- Form Success Message -->
-                        <div id="form-success" class="hidden mb-6 p-4 bg-green-100 text-green-800 rounded-lg">
-                            Thank you for your message! I'll get back to you soon.
-                        </div>
-                        <!-- Form Error Message -->
-                        <div id="form-error" class="hidden mb-6 p-4 bg-red-100 text-red-800 rounded-lg">
-                            There was an error sending your message. Please try again.
-                        </div>
-                        <!-- LLM Status Message -->
-                        <div id="llm-status" class="hidden mb-6 p-4 bg-blue-100 text-blue-800 rounded-lg">
-                            <div class="flex items-center">
-                                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                </svg>
-                                <span id="llm-message">Drafting your message...</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Contact Form -->
-                        <form id="contact-form" class="space-y-4 sm:space-y-6">
-                            <input type="hidden" name="service_id" value="YOUR_SERVICE_ID" />
-                            <input type="hidden" name="template_id" value="YOUR_TEMPLATE_ID" />
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-neutral-700 mb-1">Full Name</label>
-                                <input type="text" name="user_name" id="name" required class="w-full px-3 sm:px-4 py-3 bg-neutral-100 text-neutral-900 border-transparent border rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition-all">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-neutral-700 mb-1">Email Address</label>
-                                <input type="email" name="user_email" id="email" required class="w-full px-3 sm:px-4 py-3 bg-neutral-100 text-neutral-900 border-transparent border rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition-all">
-                            </div>
-                            <!-- New Project Brief Input -->
-                            <div class="pt-4 border-t border-neutral-200">
-                                <label for="brief" class="block text-sm font-medium text-neutral-700 mb-1">Project Idea/Brief (Optional)</label>
-                                <textarea id="brief" name="user_brief" rows="3" placeholder="I need a new app to track my garden inventory and notify me when I need to water specific plants." class="w-full px-3 sm:px-4 py-3 bg-neutral-100 text-neutral-900 border-transparent border rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition-all"></textarea>
-                                <button type="button" id="draft-message-btn" class="mt-2 flex items-center justify-center px-3 sm:px-4 py-2 bg-pink-500 text-white text-sm font-medium rounded-full shadow-md hover:bg-pink-600 transition-colors disabled:bg-pink-300 disabled:cursor-not-allowed">
-                                    <span class="text-lg mr-2">✨</span> Draft Message with AI
-                                </button>
-                            </div>
-                            
-                            <div>
-                                <label for="message" class="block text-sm font-medium text-neutral-700 mb-1">Message (Drafted content will appear here)</label>
-                                <textarea id="message" name="message" rows="4 sm:rows-5" required class="w-full px-3 sm:px-4 py-3 bg-neutral-100 text-neutral-900 border-transparent border rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition-all"></textarea>
-                            </div>
-                            <div>
-                                <button type="submit" class="w-full px-6 sm:px-8 py-3 bg-blue-600 text-white text-base sm:text-lg font-medium rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    Send Message
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Calendly Embed -->
-                    <!-- <div class="bg-neutral-800 p-6 sm:p-8 rounded-3xl shadow-2xl scroll-animate fade-in" style="transition-delay: 150ms;">
-                        <h3 class="text-xl sm:text-2xl font-semibold text-white mb-4 text-center">Book a Free Consultation</h3>
-                        <p class="text-neutral-300 mb-6 text-center text-sm sm:text-base">Ready to discuss your project? Schedule a 15-minute call—I'll review your brief and share initial ideas.</p>
-                        <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR_CALENDLY_USERNAME/15min" style="min-width:280px;height:600px;"></div>
-                        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-                    </div> -->
+       <!-- Contact Section -->
+<section id="contact" class="py-16 sm:py-24 md:py-32 bg-neutral-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 sm:mb-16 max-w-2xl mx-auto scroll-animate fade-in">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">Get In Touch</h2>
+            <p class="mt-3 sm:mt-4 text-base sm:text-lg text-neutral-300 font-light">Have a project in mind or just want to say hi? Let's talk.</p>
+        </div>
+        
+        <!-- Centered Form (No Grid) -->
+        <div class="max-w-2xl mx-auto scroll-animate fade-in">
+            <!-- Form Success Message -->
+            <div id="form-success" class="hidden mb-6 p-4 bg-green-100 text-green-800 rounded-lg">
+                Thank you for your message! I'll get back to you soon.
+            </div>
+            <!-- Form Error Message -->
+            <div id="form-error" class="hidden mb-6 p-4 bg-red-100 text-red-800 rounded-lg">
+                There was an error sending your message. Please try again.
+            </div>
+            <!-- LLM Status Message -->
+            <div id="llm-status" class="hidden mb-6 p-4 bg-blue-100 text-blue-800 rounded-lg">
+                <div class="flex items-center">
+                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span id="llm-message">Drafting your message...</span>
                 </div>
             </div>
-        </section>
+            
+            <!-- Contact Form -->
+            <form id="contact-form" class="space-y-4 sm:space-y-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-neutral-300 mb-1">Full Name</label>
+                    <input type="text" name="user_name" id="name" required class="w-full px-3 sm:px-4 py-3 bg-neutral-800/50 text-white border border-neutral-600/50 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-300/50 transition-all placeholder:text-neutral-400">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-neutral-300 mb-1">Email Address</label>
+                    <input type="email" name="user_email" id="email" required class="w-full px-3 sm:px-4 py-3 bg-neutral-800/50 text-white border border-neutral-600/50 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-300/50 transition-all placeholder:text-neutral-400">
+                </div>
+                <!-- Project Brief Input -->
+                <div class="pt-4 border-t border-neutral-700">
+                    <label for="brief" class="block text-sm font-medium text-neutral-300 mb-1">Project Idea/Brief (Optional)</label>
+                    <textarea id="brief" name="user_brief" rows="3" placeholder="E.g., I need a React app for tracking garden inventory with watering notifications." class="w-full px-3 sm:px-4 py-3 bg-neutral-800/50 text-white border border-neutral-600/50 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-300/50 transition-all placeholder:text-neutral-400 resize-none"></textarea>
+                    <button type="button" id="draft-message-btn" class="mt-2 flex items-center justify-center px-3 sm:px-4 py-2 bg-blue-500 text-white text-sm font-medium rounded-full shadow-md hover:bg-blue-600 transition-colors disabled:bg-blue-300 disabled:cursor-not-allowed">
+                        <span class="text-lg mr-2">✨</span> Draft Message with AI
+                    </button>
+                </div>
+                
+                <div>
+                    <label for="message" class="block text-sm font-medium text-neutral-300 mb-1">Message (Drafted content will appear here)</label>
+                    <textarea id="message" name="message" rows="4 sm:rows-5" required class="w-full px-3 sm:px-4 py-3 bg-neutral-800/50 text-white border border-neutral-600/50 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-300/50 transition-all placeholder:text-neutral-400 resize-none" placeholder="Your detailed message..."></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="w-full px-6 sm:px-8 py-3 bg-blue-600 text-white text-base sm:text-lg font-medium rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
     </main>
 
     <!-- Footer -->
