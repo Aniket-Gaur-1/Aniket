@@ -148,6 +148,37 @@ html {
     opacity: 1;
 }
 
+
+/* Dramatic Hero Hover Enhancements */
+#hero-title:hover {
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5); /* Blue glow */
+}
+
+#hero-desc::after {
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3); /* Underline glow */
+}
+
+/* Pulse animation for button (subtle dramatic flair) */
+@keyframes pulse-dramatic {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.group:hover .animate-pulse {
+    animation: pulse-dramatic 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    #hero-title, #hero-desc, [id="home"] a {
+        transition: none !important;
+        transform: none !important;
+    }
+    .group:hover .animate-pulse {
+        animation: none;
+    }
+}
+
 /* Mobile Optimizations */
 @media (max-width: 640px) {
     .grid-cols-1 {

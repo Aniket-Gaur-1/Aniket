@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Hero Typing Animation ---
     const heroTitleText = "Hello. I'm Aniket.";
-    const heroDescText = "I design and build exceptional digital experiences that are intuitive, efficient, and beautiful.";
+    const heroDescText = "I shape ideas into refined digital experiences where precision, performance, and purpose come together.";
     const titleEl = document.getElementById('hero-title');
     const descEl = document.getElementById('hero-desc');
 
