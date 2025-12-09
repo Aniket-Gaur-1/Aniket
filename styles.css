@@ -1,44 +1,12 @@
-/* Apply Inter font */
+/* =====================================================
+   BASE & GLOBAL STYLES
+===================================================== */
+
+/* Font & rendering */
 body {
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-/* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: #f8fafc; /* slate-50 */
-}
-::-webkit-scrollbar-thumb {
-    background: #2563eb; /* blue-600 */
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #1d4ed8; /* blue-700 */
-}
-
-/* Active nav link style */
-.nav-link.active {
-    color: #2563eb; /* blue-600 */
-    font-weight: 600;
-}
-
-/* Mobile Menu Animation */
-#mobile-menu {
-    transition: all 0.3s ease-in-out;
-}
-
-/* Scroll-triggered fade-in animation */
-.scroll-animate.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s cubic-bezier(0.33, 1, 0.68, 1), transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
-}
-.scroll-animate.is-visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 /* Smooth scrolling */
@@ -46,35 +14,79 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Modal & Lightbox Styles */
+/* =====================================================
+   SCROLLBAR (Desktop only)
+===================================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f8fafc;
+}
+::-webkit-scrollbar-thumb {
+    background: #2563eb;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #1d4ed8;
+}
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.nav-link.active {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+/* Mobile menu animation */
+#mobile-menu {
+    transition: all 0.3s ease-in-out;
+}
+
+/* =====================================================
+   SCROLL / VIEWPORT ANIMATIONS
+===================================================== */
+
+.scroll-animate.fade-in,
+.gallery-grid-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity 0.6s cubic-bezier(0.33, 1, 0.68, 1),
+        transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.scroll-animate.is-visible,
+.gallery-grid-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =====================================================
+   MODAL & LIGHTBOX
+===================================================== */
+
 .modal-hidden {
     opacity: 0;
     visibility: hidden;
     transform: scale(0.95);
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 }
+
 .modal-visible {
     opacity: 1;
     visibility: visible;
     transform: scale(1);
 }
-/* Prevent body scroll when modal is open */
+
 .body-no-scroll {
     overflow: hidden;
 }
 
-/* Gallery Grid Item Animation */
-.gallery-grid-item {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s cubic-bezier(0.33, 1, 0.68, 1), transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
-}
-.gallery-grid-item.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Lightbox Image Animation */
+/* Lightbox image animation */
 #lightbox-img {
     opacity: 0;
     transform: scale(0.9);
@@ -85,7 +97,11 @@ html {
     transform: scale(1);
 }
 
-/* Typing Animation Cursor */
+/* =====================================================
+   TYPOGRAPHY & TEXT EFFECTS
+===================================================== */
+
+/* Typing cursor */
 .typing-cursor {
     display: inline-block;
     width: 2px;
@@ -93,232 +109,202 @@ html {
     background-color: #2563eb;
     animation: blink 1s infinite;
 }
+
 @keyframes blink {
     0%, 50% { opacity: 1; }
     51%, 100% { opacity: 0; }
 }
 
-/* Custom CSS for the Apple-Inspired Toolkit Tab Button */
+/* =====================================================
+   TOOLKIT / TABS (Apple Segmented Control Style)
+===================================================== */
+
 .toolkit-tab-btn {
-    color: #525252; /* neutral-600 */
+    color: #525252;
     font-weight: 500;
+    background-color: transparent;
     text-align: center;
-    background-color: transparent; /* Essential for segmented look */
-}
-.toolkit-tab-btn.active-tab-btn {
-    background-color: #ffffff; /* white */
-    color: #171717; /* neutral-900 */
-    /* Subtle inner shadow for the 'pressed' or 'selected' look */
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
-    font-weight: 600;
-}
-.toolkit-tab-btn:not(.active-tab-btn):hover {
-    color: #171717; /* neutral-900 - Subtle hover */
 }
 
-/* Animation for content transition (keep the same as before for smooth tab switching) */
+.toolkit-tab-btn.active-tab-btn {
+    background-color: #ffffff;
+    color: #171717;
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.toolkit-tab-btn:not(.active-tab-btn):hover {
+    color: #171717;
+}
+
 .toolkit-tab-content {
-    transform: translateY(15px); /* Increased Y for more noticeable slide-in */
     opacity: 0;
     visibility: hidden;
-    max-height: 0; 
+    transform: translateY(15px);
+    max-height: 0;
     overflow: hidden;
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out, max-height 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Added cubic-bezier for smoother feel */
-}
-.toolkit-tab-content.active-content {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-    max-height: 800px; /* Increased max-height */
-    display: grid; /* Re-apply grid display */
+    transition:
+        opacity 0.4s ease-out,
+        transform 0.4s ease-out,
+        max-height 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Testimonial carousel styles */
+.toolkit-tab-content.active-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    max-height: 800px;
+    display: grid;
+}
+
+/* =====================================================
+   TESTIMONIALS
+===================================================== */
+
 .testimonial-carousel {
     overflow: hidden;
     position: relative;
 }
+
 .testimonial-slide {
     display: none;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
 }
+
 .testimonial-slide.active {
     display: block;
     opacity: 1;
 }
 
+/* =====================================================
+   HERO INTERACTIONS (Desktop only)
+===================================================== */
 
-/* Dramatic Hero Hover Enhancements */
 #hero-title:hover {
-    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5); /* Blue glow */
+    text-shadow: 0 0 20px rgba(59,130,246,0.5);
 }
 
 #hero-desc::after {
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3); /* Underline glow */
+    box-shadow: 0 0 10px rgba(59,130,246,0.3);
 }
 
-/* Pulse animation for button (subtle dramatic flair) */
+/* Button pulse */
 @keyframes pulse-dramatic {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.05); }
 }
 
 .group:hover .animate-pulse {
-    animation: pulse-dramatic 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation: pulse-dramatic 1.5s cubic-bezier(0.4,0,0.6,1) infinite;
 }
 
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-    #hero-title, #hero-desc, [id="home"] a {
-        transition: none !important;
-        transform: none !important;
-    }
-    .group:hover .animate-pulse {
-        animation: none;
-    }
-}
+/* =====================================================
+   CONTACT FORM
+===================================================== */
 
-/* Mobile Optimizations */
-@media (max-width: 640px) {
-    .grid-cols-1 {
-        grid-template-columns: 1fr;
-    }
-    .py-16 {
-        padding-top: 4rem;
-        padding-bottom: 4rem;
-    }
-    .px-4 {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-
-    .mobile-btn {
-    width: auto;
-    max-width: 320px;   /* Apple-style ideal width */
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    margin-left: auto;
-    margin-right: auto;
-    display: inline-flex;
-    justify-content: center;
-  }
-}
-
-/* Contact Form Specific Styles */
 #contact input,
 #contact textarea {
-    background-color: rgba(15, 23, 42, 0.5); /* neutral-800/50 for dark mode compatibility */
-    border-color: rgba(71, 85, 105, 0.5); /* neutral-600/50 */
+    background-color: rgba(15,23,42,0.5);
+    border-color: rgba(71,85,105,0.5);
     color: #ffffff;
     transition: all 0.2s ease-in-out;
 }
 
 #contact input::placeholder,
 #contact textarea::placeholder {
-    color: rgba(148, 163, 184, 0.6); /* neutral-400/60 */
+    color: rgba(148,163,184,0.6);
 }
 
 #contact input:focus,
 #contact textarea:focus {
-    border-color: #3b82f6; /* blue-500 */
-    ring-color: rgba(59, 130, 246, 0.5); /* blue-500/50 */
-    background-color: rgba(15, 23, 42, 0.7);
-    transform: translateY(-1px); /* Subtle lift on focus */
+    border-color: #3b82f6;
+    background-color: rgba(15,23,42,0.7);
+    transform: translateY(-1px);
 }
 
-#contact .bg-green-100,
-#contact .bg-red-100,
-#contact .bg-yellow-100,
-#contact .bg-blue-100 {
-    color: inherit; /* Ensure text contrast on dark parent */
-}
-
-/* Enhanced Mobile Responsiveness for Contact */
-@media (max-width: 640px) {
-    #contact .py-16 {
-        padding-top: 4rem;
-        padding-bottom: 4rem;
-    }
-    #contact .px-4 {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-    #contact textarea {
-        font-size: 0.875rem; /* Smaller font on mobile for better fit */
-    }
-}
-
-/* Ensure no-scroll doesn't affect form inputs */
 .body-no-scroll #contact input,
 .body-no-scroll #contact textarea {
-    pointer-events: auto; /* Keep interactive */
+    pointer-events: auto;
 }
 
+/* =====================================================
+   MOBILE — APPLE-STYLE OPTIMIZATIONS
+===================================================== */
 
-/* Apple-style mobile content width */
 @media (max-width: 640px) {
-  .max-w-7xl,
-  .max-w-6xl,
-  .max-w-5xl,
-  .max-w-4xl,
-  .max-w-3xl {
-    max-width: 92%;
-    margin-left: auto;
-    margin-right: auto;
-  }
+
+    /* Content width */
+    .max-w-7xl,
+    .max-w-6xl,
+    .max-w-5xl,
+    .max-w-4xl,
+    .max-w-3xl {
+        max-width: 92%;
+        margin: auto;
+    }
+
+    /* Typography */
+    h1 {
+        font-size: 2.25rem;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+        line-height: 1.2;
+        letter-spacing: -0.015em;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 1.65;
+    }
+
+    /* Buttons */
+    a,
+    button {
+        min-height: 44px;
+        border-radius: 9999px;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    a:active,
+    button:active {
+        transform: scale(0.97);
+    }
+
+    /* Apple-width button */
+    .mobile-btn {
+        max-width: 320px;
+        padding: 0 1.5rem;
+        margin: auto;
+        display: inline-flex;
+        justify-content: center;
+    }
+
+    /* Reduce motion / effects */
+    #hero-title:hover {
+        text-shadow: none;
+    }
+
+    .animate-pulse {
+        animation: none;
+    }
+
+    section {
+        padding: 4.5rem 0;
+    }
 }
-/* Apple-like mobile typography */
-@media (max-width: 640px) {
-  h1 {
-    font-size: 2.25rem; /* ~36px */
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-  }
 
-  h2 {
-    font-size: 1.75rem; /* ~28px */
-    line-height: 1.2;
-    letter-spacing: -0.015em;
-  }
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
 
-  p {
-    font-size: 1rem; /* 16px – Apple standard */
-    line-height: 1.65;
-  }
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
 }
-
-/* Apple-style buttons on mobile */
-@media (max-width: 640px) {
-  a,
-  button {
-    min-height: 44px; /* Apple HIG */
-    border-radius: 9999px;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  a:active,
-  button:active {
-    transform: scale(0.97);
-  }
-}
-
-/* Reduce intensity on mobile */
-@media (max-width: 640px) {
-  #hero-title:hover {
-    text-shadow: none;
-  }
-
-  .animate-pulse {
-    animation: none;
-  }
-}
-
-/* Apple vertical rhythm */
-@media (max-width: 640px) {
-  section {
-    padding-top: 4.5rem;
-    padding-bottom: 4.5rem;
-  }
-}
-
