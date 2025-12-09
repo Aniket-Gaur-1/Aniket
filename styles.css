@@ -192,6 +192,17 @@ html {
         padding-left: 1rem;
         padding-right: 1rem;
     }
+
+    .mobile-btn {
+    width: auto;
+    max-width: 320px;   /* Apple-style ideal width */
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-flex;
+    justify-content: center;
+  }
 }
 
 /* Contact Form Specific Styles */
@@ -243,3 +254,71 @@ html {
 .body-no-scroll #contact textarea {
     pointer-events: auto; /* Keep interactive */
 }
+
+
+/* Apple-style mobile content width */
+@media (max-width: 640px) {
+  .max-w-7xl,
+  .max-w-6xl,
+  .max-w-5xl,
+  .max-w-4xl,
+  .max-w-3xl {
+    max-width: 92%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+/* Apple-like mobile typography */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 2.25rem; /* ~36px */
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: 1.75rem; /* ~28px */
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+  }
+
+  p {
+    font-size: 1rem; /* 16px – Apple standard */
+    line-height: 1.65;
+  }
+}
+
+/* Apple-style buttons on mobile */
+@media (max-width: 640px) {
+  a,
+  button {
+    min-height: 44px; /* Apple HIG */
+    border-radius: 9999px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a:active,
+  button:active {
+    transform: scale(0.97);
+  }
+}
+
+/* Reduce intensity on mobile */
+@media (max-width: 640px) {
+  #hero-title:hover {
+    text-shadow: none;
+  }
+
+  .animate-pulse {
+    animation: none;
+  }
+}
+
+/* Apple vertical rhythm */
+@media (max-width: 640px) {
+  section {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+}
+
